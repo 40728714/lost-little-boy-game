@@ -1,4 +1,4 @@
-let timeLeft = 5;
+let timeLeft = 7;
 let timerElement = document.getElementById("timer");
 
 if (timerElement) {
