@@ -27,37 +27,6 @@
     <button onclick="location.href='credits.html'">Credits</button>
   </footer>
 
-  <script>
-    const bgMusic = document.getElementById("bg-music");
-    const timeDisplay = document.getElementById("time-value");
-    let timeLeft = 10;
-
-    const countdown = setInterval(() => {
-      timeLeft--;
-      if (timeDisplay) timeDisplay.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        location.href = "lose.html";
-      }
-    }, 1000);
-
-    function choose(nextPage) {
-      clearInterval(countdown);
-      location.href = nextPage;
-    }
-
-    function toggleSound() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        alert("Sound unmuted");
-      } else {
-        bgMusic.pause();
-        alert("Sound muted");
-      }
-    }
-
-    window.choose = choose;
-    window.toggleSound = toggleSound;
-  </script>
+  <script src="js/game.js"></script>
 </body>
 </html>
