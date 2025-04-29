@@ -41,5 +41,12 @@ button:hover {
   margin: 20px auto;
   display: block;
   border-radius: 10px;
+  
 }
+.azai-image-large {
+  max-width: 300px;
+  display: block;
+  margin: 40px auto 20px auto;
+}
+
 
