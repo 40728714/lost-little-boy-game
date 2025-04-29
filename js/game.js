@@ -2,7 +2,7 @@ let timeLeft = 5;
 let timerElement = document.getElementById("timer");
 
 if (timerElement) {
-  let countdown = setInterval(() => {
+  const countdown = setInterval(() => {
     timeLeft--;
     timerElement.textContent = "Time left: " + timeLeft;
     if (timeLeft <= 0) {
@@ -19,6 +19,5 @@ function choose(nextPage) {
 let isMuted = false;
 function toggleSound() {
   isMuted = !isMuted;
-  // Insert audio logic here if background music is added
   alert(isMuted ? "Sound muted" : "Sound unmuted");
 }
