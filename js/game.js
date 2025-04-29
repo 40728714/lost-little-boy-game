@@ -3,9 +3,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const timeDisplay = document.getElementById("time-value");
 
   let timeLeft = 10;
-
-  // Timer logic (only run if there's a timer on the page)
   let countdown;
+
   if (timeDisplay) {
     countdown = setInterval(() => {
       timeLeft--;
@@ -17,13 +16,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  // Navigation function
   window.choose = function(nextPage) {
     if (countdown) clearInterval(countdown);
     location.href = nextPage;
   };
 
-  // Mute toggle function
   window.toggleSound = function() {
     if (!bgMusic) return;
     if (bgMusic.paused) {
