@@ -17,7 +17,19 @@ function choose(nextPage) {
 }
 
 let isMuted = false;
+const bgMusic = document.getElementById("bg-music");
+
 function toggleSound() {
+  if (!bgMusic) return; // In case music tag is missing
+
   isMuted = !isMuted;
-  alert(isMuted ? "Sound muted" : "Sound unmuted");
+
+  if (isMuted) {
+    bgMusic.pause();
+    alert("Sound muted");
+  } else {
+    bgMusic.play();
+    alert("Sound unmuted");
+  }
 }
+
