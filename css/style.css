@@ -81,5 +81,27 @@ body > button {
   background-repeat: no-repeat;
 }
 
+.background-forest1 {
+  background-image: url('../assets/forest.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.background-forest1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 0;
+}
+
+.background-forest1 * {
+  position: relative;
+  z-index: 1; /* bring content above overlay */
+}
+
+
 </style>
 
