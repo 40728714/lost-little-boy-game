@@ -1,0 +1,25 @@
+<!-- File: story1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story - Page 1</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <p>Azai hears a strange noise. Should he follow it or stay on the path?</p>
+    <button onclick="choose('story2.html')">Follow the noise</button>
+    <button onclick="choose('lose.html')">Stay on the path</button>
+    <div id="timer">Time left: 5</div>
+  </main>
+  <footer>
+    <button onclick="location.href='index.html'">Restart</button>
+    <button onclick="toggleSound()">Mute</button>
+    <button onclick="location.href='faq.html'">FAQ</button>
+    <button onclick="location.href='credits.html'">Credits</button>
+  </footer>
+  <script src="js/game.js"></script>
+</body>
+</html>
