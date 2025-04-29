@@ -19,17 +19,29 @@ function choose(nextPage) {
 let isMuted = false;
 const bgMusic = document.getElementById("bg-music");
 
+// Apply stored mute state on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const isMuted = localStorage.getItem("mute") === "true";
+  if (bgMusic) {
+    if (isMuted) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play();
+    }
+  }
+});
+
 function toggleSound() {
-  if (!bgMusic) return; // In case music tag is missing
-
-  isMuted = !isMuted;
-
+  const isMuted = bgMusic.paused;
   if (isMuted) {
-    bgMusic.pause();
-    alert("Sound muted");
-  } else {
     bgMusic.play();
+    localStorage.setItem("mute", "false");
     alert("Sound unmuted");
+  } else {
+    bgMusic.pause();
+    localStorage.setItem("mute", "true");
+    alert("Sound muted");
   }
 }
+
 
