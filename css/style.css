@@ -49,4 +49,14 @@ button:hover {
   margin: 40px auto 20px auto;
 }
 
+<style>
+  body {
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+</style>
 
