@@ -22,65 +22,43 @@
 
   <footer>
     <button onclick="location.href='index.html'">Restart</button>
-    <button id="mute-button" onclick="toggleSound()">Mute</button>
+    <button onclick="toggleSound()">Mute</button>
     <button onclick="location.href='faq.html'">FAQ</button>
     <button onclick="location.href='credits.html'">Credits</button>
   </footer>
 
-  <script src="js/game.js"></script>
+  <script>
+    let timeLeft = 10;
+    let timerElement = document.getElementById("timer");
+    let bgMusic = document.getElementById("bg-music");
+
+    if (timerElement) {
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = "Time left: " + timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          location.href = "lose.html";
+        }
+      }, 1000);
+
+      function choose(nextPage) {
+        clearInterval(countdown);
+        location.href = nextPage;
+      }
+
+      window.choose = choose;
+    }
+
+    function toggleSound() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        alert("Sound unmuted");
+      } else {
+        bgMusic.pause();
+        alert("Sound muted");
+      }
+    }
+  </script>
 </body>
 </html>
-
-<!-- ✅ game.js file (place in js/game.js) -->
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const bgMusic = document.getElementById("bg-music");
-  const muteButton = document.getElementById("mute-button");
-  const timerElement = document.getElementById("timer");
-  let timeLeft = 10;
-
-  // Handle stored mute preference
-  const isMuted = localStorage.getItem("mute") === "true";
-  if (bgMusic) {
-    if (isMuted) {
-      bgMusic.pause();
-    } else {
-      bgMusic.play().catch(() => {});
-    }
-  }
-
-  if (muteButton) {
-    muteButton.textContent = isMuted ? "Unmute" : "Mute";
-  }
-
-  window.toggleSound = () => {
-    if (!bgMusic || !muteButton) return;
-    if (bgMusic.paused) {
-      bgMusic.play();
-      localStorage.setItem("mute", "false");
-      muteButton.textContent = "Mute";
-    } else {
-      bgMusic.pause();
-      localStorage.setItem("mute", "true");
-      muteButton.textContent = "Unmute";
-    }
-  };
-
-  // Timer logic
-  if (timerElement) {
-    const countdown = setInterval(() => {
-      timeLeft--;
-      timerElement.textContent = "Time left: " + timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        location.href = "lose.html";
-      }
-    }, 1000);
-
-    window.choose = function (nextPage) {
-      clearInterval(countdown);
-      location.href = nextPage;
-    };
-  }
-});
-</script>
