@@ -35,3 +35,11 @@ button {
 button:hover {
   background-color: darkgreen;
 }
+.azai-image {
+  max-width: 200px;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+}
+
