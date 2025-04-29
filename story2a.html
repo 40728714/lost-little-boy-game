@@ -11,19 +11,23 @@
   <audio id="bg-music" loop autoplay>
     <source src="assets/background-music.mp3" type="audio/mpeg">
   </audio>
+
   <main>
     <img src="assets/azai.png" alt="Azai at the shrine" class="azai-image">
     <p>Azai finds an overgrown shrine glowing faintly. A stone path curves left, and a vine-covered archway stands to the right.</p>
     <button onclick="choose('story3a.html')">Light the incense and follow the stone path</button>
     <button onclick="choose('story3b.html')">Enter the archway cloaked in vines</button>
-    <div id="timer">Time left: 5</div>
+    <div id="timer">Time left: <span id="time-value">10</span></div>
   </main>
+
   <footer>
     <button onclick="location.href='index.html'">Restart</button>
-    <button onclick="toggleSound()">Mute/Unmute</button>
+    <button onclick="toggleSound()">Mute</button>
     <button onclick="location.href='faq.html'">FAQ</button>
     <button onclick="location.href='credits.html'">Credits</button>
   </footer>
+
   <script src="js/game.js"></script>
 </body>
 </html>
+
