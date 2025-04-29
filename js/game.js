@@ -5,6 +5,16 @@ window.addEventListener("DOMContentLoaded", () => {
   let timeLeft = 10;
   let countdown;
 
+  // Check localStorage for mute setting
+  const isMuted = localStorage.getItem("mute") === "true";
+  if (bgMusic) {
+    if (isMuted) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play().catch(() => {});
+    }
+  }
+
   if (timeDisplay) {
     countdown = setInterval(() => {
       timeLeft--;
@@ -23,11 +33,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   window.toggleSound = function() {
     if (!bgMusic) return;
+
     if (bgMusic.paused) {
       bgMusic.play();
+      localStorage.setItem("mute", "false");
       alert("Sound unmuted");
     } else {
       bgMusic.pause();
+      localStorage.setItem("mute", "true");
       alert("Sound muted");
     }
   };
