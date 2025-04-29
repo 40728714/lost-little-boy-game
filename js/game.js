@@ -1,51 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Story - Page 1</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <audio id="bg-music" loop autoplay>
-    <source src="assets/background-music.mp3" type="audio/mpeg">
-  </audio>
-
-  <main>
-    <img src="assets/azai.png" alt="Azai in the forest" class="azai-image">
-    <p>Azai steps into the woods, each crunch of a twig beneath his feet echoing through the thickening silence. A fork in the path lies ahead.</p>
-    <button onclick="choose('story2a.html')">Follow the trail marked with old lanterns</button>
-    <button onclick="choose('story2b.html')">Venture into the dense underbrush</button>
-    <div id="timer">Time left: 10</div>
-  </main>
-
-  <footer>
-    <button onclick="location.href='index.html'">Restart</button>
-    <button onclick="toggleSound()">Mute</button>
-    <button onclick="location.href='faq.html'">FAQ</button>
-    <button onclick="location.href='credits.html'">Credits</button>
-  </footer>
-
-<script>
+window.addEventListener("DOMContentLoaded", () => {
   const bgMusic = document.getElementById("bg-music");
   const timeDisplay = document.getElementById("time-value");
+
   let timeLeft = 10;
 
-  const countdown = setInterval(() => {
-    timeLeft--;
-    if (timeDisplay) timeDisplay.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      clearInterval(countdown);
-      location.href = "lose.html";
-    }
-  }, 1000);
-
-  function choose(nextPage) {
-    clearInterval(countdown);
-    location.href = nextPage;
+  // Timer logic (only run if there's a timer on the page)
+  let countdown;
+  if (timeDisplay) {
+    countdown = setInterval(() => {
+      timeLeft--;
+      timeDisplay.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        location.href = "lose.html";
+      }
+    }, 1000);
   }
 
-  function toggleSound() {
+  // Navigation function
+  window.choose = function(nextPage) {
+    if (countdown) clearInterval(countdown);
+    location.href = nextPage;
+  };
+
+  // Mute toggle function
+  window.toggleSound = function() {
+    if (!bgMusic) return;
     if (bgMusic.paused) {
       bgMusic.play();
       alert("Sound unmuted");
@@ -53,11 +33,5 @@
       bgMusic.pause();
       alert("Sound muted");
     }
-  }
-
-  // Ensure functions are globally available
-  window.choose = choose;
-  window.toggleSound = toggleSound;
-</script>
-</body>
-</html>
+  };
+});
