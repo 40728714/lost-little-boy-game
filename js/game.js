@@ -24,35 +24,39 @@ const bgMusic = document.getElementById("bg-music");
 const muteButton = document.getElementById("mute-button");
 
 window.addEventListener("DOMContentLoaded", () => {
+  const bgMusic = document.getElementById("bg-music");
+  const muteButton = document.getElementById("mute-button");
+
   const isMuted = localStorage.getItem("mute") === "true";
+
   if (bgMusic) {
     if (isMuted) {
       bgMusic.pause();
     } else {
-      bgMusic.play();
+      bgMusic.play().catch(() => {});
     }
   }
 
   if (muteButton) {
     muteButton.textContent = isMuted ? "Unmute" : "Mute";
   }
+
+  // Attach toggleSound with safety check
+  window.toggleSound = () => {
+    const isCurrentlyMuted = bgMusic.paused;
+
+    if (isCurrentlyMuted) {
+      bgMusic.play();
+      localStorage.setItem("mute", "false");
+      muteButton.textContent = "Mute";
+    } else {
+      bgMusic.pause();
+      localStorage.setItem("mute", "true");
+      muteButton.textContent = "Unmute";
+    }
+  };
 });
 
-function toggleSound() {
-  const isCurrentlyMuted = bgMusic.paused;
-
-  if (isCurrentlyMuted) {
-    bgMusic.play();
-    localStorage.setItem("mute", "false");
-    if (muteButton) muteButton.textContent = "Mute";
-    alert("Sound unmuted");
-  } else {
-    bgMusic.pause();
-    localStorage.setItem("mute", "true");
-    if (muteButton) muteButton.textContent = "Unmute";
-    alert("Sound muted");
-  }
-}
 
 
 
