@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <audio id="bg-music" loop autoplay>
-  <source src="assets/background-music.mp3" type="audio/mpeg">
-</audio>
+  <audio id="bg-music" loop autoplay>
+    <source src="assets/background-music.mp3" type="audio/mpeg">
+  </audio>
 
   <main>
     <img src="assets/azai.png" alt="Azai in the forest" class="azai-image">
@@ -19,12 +19,45 @@
     <button onclick="choose('story2b.html')">Venture into the dense underbrush</button>
     <div id="timer">Time left: <span id="time-value">10</span></div>
   </main>
+
   <footer>
     <button onclick="location.href='index.html'">Restart</button>
-    <button onclick="toggleSound()">Mute/Unmute</button>
+    <button onclick="toggleSound()">Mute</button>
     <button onclick="location.href='faq.html'">FAQ</button>
     <button onclick="location.href='credits.html'">Credits</button>
   </footer>
-  <script src="js/game.js"></script>
+
+  <script>
+    const bgMusic = document.getElementById("bg-music");
+    const timeDisplay = document.getElementById("time-value");
+    let timeLeft = 10;
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      if (timeDisplay) timeDisplay.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        location.href = "lose.html";
+      }
+    }, 1000);
+
+    function choose(nextPage) {
+      clearInterval(countdown);
+      location.href = nextPage;
+    }
+
+    function toggleSound() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        alert("Sound unmuted");
+      } else {
+        bgMusic.pause();
+        alert("Sound muted");
+      }
+    }
+
+    window.choose = choose;
+    window.toggleSound = toggleSound;
+  </script>
 </body>
 </html>
