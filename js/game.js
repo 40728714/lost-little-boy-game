@@ -1,4 +1,3 @@
-<!-- ✅ Working HTML Structure Example (story1.html or any page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,38 +26,38 @@
     <button onclick="location.href='credits.html'">Credits</button>
   </footer>
 
-  <script>
-    let timeLeft = 10;
-    let timerElement = document.getElementById("timer");
-    let bgMusic = document.getElementById("bg-music");
+<script>
+  const bgMusic = document.getElementById("bg-music");
+  const timeDisplay = document.getElementById("time-value");
+  let timeLeft = 10;
 
-    if (timerElement) {
-      const countdown = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = "Time left: " + timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          location.href = "lose.html";
-        }
-      }, 1000);
-
-      function choose(nextPage) {
-        clearInterval(countdown);
-        location.href = nextPage;
-      }
-
-      window.choose = choose;
+  const countdown = setInterval(() => {
+    timeLeft--;
+    if (timeDisplay) timeDisplay.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      location.href = "lose.html";
     }
+  }, 1000);
 
-    function toggleSound() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        alert("Sound unmuted");
-      } else {
-        bgMusic.pause();
-        alert("Sound muted");
-      }
+  function choose(nextPage) {
+    clearInterval(countdown);
+    location.href = nextPage;
+  }
+
+  function toggleSound() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      alert("Sound unmuted");
+    } else {
+      bgMusic.pause();
+      alert("Sound muted");
     }
-  </script>
+  }
+
+  // Ensure functions are globally available
+  window.choose = choose;
+  window.toggleSound = toggleSound;
+</script>
 </body>
 </html>
