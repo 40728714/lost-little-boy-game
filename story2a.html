@@ -1,0 +1,26 @@
+<!-- File: story2a.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story 2A</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <img src="assets/azai.png" alt="Azai at the shrine" class="azai-image">
+    <p>Azai finds an overgrown shrine glowing faintly. A stone path curves left, and a vine-covered archway stands to the right.</p>
+    <button onclick="choose('story3a.html')">Light the incense and follow the stone path</button>
+    <button onclick="choose('story3b.html')">Enter the archway cloaked in vines</button>
+    <div id="timer">Time left: 5</div>
+  </main>
+  <footer>
+    <button onclick="location.href='index.html'">Restart</button>
+    <button onclick="toggleSound()">Mute</button>
+    <button onclick="location.href='faq.html'">FAQ</button>
+    <button onclick="location.href='credits.html'">Credits</button>
+  </footer>
+  <script src="js/game.js"></script>
+</body>
+</html>

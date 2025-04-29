@@ -1,0 +1,26 @@
+<!-- File: story2b.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story 2B</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <img src="assets/azai.png" alt="Azai hears whispers" class="azai-image">
+    <p>Azai stumbles upon a broken compass and hears a melody from deep within the trees. Two paths emerge: one toward the sound, one toward flickering lights.</p>
+    <button onclick="choose('story3c.html')">Follow the melody</button>
+    <button onclick="choose('story3d.html')">Follow the flickering lights</button>
+    <div id="timer">Time left: 5</div>
+  </main>
+  <footer>
+    <button onclick="location.href='index.html'">Restart</button>
+    <button onclick="toggleSound()">Mute</button>
+    <button onclick="location.href='faq.html'">FAQ</button>
+    <button onclick="location.href='credits.html'">Credits</button>
+  </footer>
+  <script src="js/game.js"></script>
+</body>
+</html>
